@@ -1,0 +1,17 @@
+{
+  "name": "bwd-labs",
+  "version": "1.0.0",
+  "description": "ФИО: Кривоногов Павел Викторович\r Группа: ПрИ-23",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  }
+}
