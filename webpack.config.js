@@ -28,6 +28,13 @@ module.exports = {
                use: ['style-loader', 'css-loader'], // Загрузчики, используемые для обработки CSS-файлов
 
            },
+		   {
+			   
+				test: /\.(png|svg|jpg|jpeg|gif)$/i, // Для работы с изображениями
+			
+				type: 'asset/resource',
+			
+			},
 
        ],
 
@@ -45,6 +52,42 @@ module.exports = {
            chunks: ['index'],
 
            filename: 'index.html'
+
+       }),
+	   
+	          new HtmlWebpackPlugin({
+
+           template: './src/about.html',
+
+           inject: true,
+
+           chunks: ['index'],
+
+           filename: 'about.html'
+
+       }),
+	   
+	   	          new HtmlWebpackPlugin({
+
+           template: './src/List.html',
+
+           inject: true,
+
+           chunks: ['index'],
+
+           filename: 'List.html'
+
+       }),
+	   
+	   	   	          new HtmlWebpackPlugin({
+
+           template: './src/projects.html',
+
+           inject: true,
+
+           chunks: ['index'],
+
+           filename: 'projects.html'
 
        }),
 

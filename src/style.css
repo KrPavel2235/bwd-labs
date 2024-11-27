@@ -1,0 +1,352 @@
+body {
+    font-family: Arial, sans-serif;  /* Шрифт для всего документа */
+    background-color: #f0f0f0;  /* Фоновый цвет страницы */
+}
+
+.container {
+    display: flex;  /* Размещение колонок в ряд */
+    flex-direction: row;
+    justify-content: space-around;  /* Пространство равномерно распределено между колонками */
+    padding: 20px;  /* Внутренние отступы вокруг контейнера */
+}
+
+.column {
+    border: 1px solid #ccc;  /* Серый бордюр вокруг каждой колонки */
+    padding: 10px;  /* Внутренние отступы внутри каждой колонки */
+    width: 30%;  /* Ширина каждой колонки занимает 30% от ширины контейнера */
+    min-height: 300px;  /* Минимальная высота колонки */
+    background-color: #f9f9f9;  /* Светло-серый фон для колонок */
+}
+
+h2 {
+    text-align: center;  /* Заголовки выровнены по центру в каждой колонке */
+    font-size: 24px;
+}
+
+/* Общий стиль для модального окна */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Затемнение фона */
+}
+
+/* Контент модального окна */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Кнопка закрытия */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Кнопки формы */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.task-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 15px;
+    background-color: var(--random-color, #fffae3);  /* Используем переменную для случайного цвета */
+    border: 1px solid #e0d5a7;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    transform: rotate(var(--random-rotate, -2deg));  /* Используем переменную для случайного угла наклона */
+    transition: transform 0.2s ease;
+}
+
+.task-box:hover {
+    transform: rotate(0deg);
+}
+
+
+.task-box input[type="checkbox"] {
+    margin-right: 10px;  /* Отступ справа от чекбокса до текста задачи */
+}
+
+.task-box button {
+    margin-left: 10px;  /* Отступ слева от кнопки удаления до текста задачи */
+    background-color: #ff6347;  /* Цвет кнопки удаления (оранжево-красный) */
+    color: white;  /* Цвет текста кнопки удаления */
+    border: none;  /* Убираем стандартную границу кнопки */
+    padding: 5px;  /* Внутренние отступы кнопки для большего размера */
+    cursor: pointer;  /* Курсор изменяется на указатель при наведении */
+    border-radius: 3px;  /* Скругленные углы кнопки */
+    font-size: 12px;  /* Размер текста кнопки */
+}
+
+.task-box button:hover {
+    background-color: darkred;  /* Цвет кнопки при наведении */
+}
+
+#taskInput {
+    padding: 10px;  /* Внутренние отступы текстового поля для задачи */
+    width: calc(100% - 20px);  /* Ширина текстового поля (вычитаем отступы) */
+    margin-top: 10px;  /* Отступ сверху между полем ввода и кнопкой */
+}
+
+textarea {
+    width: calc(100% - 20px);  /* Ширина текстовой области */
+    padding: 10px;  /* Внутренние отступы */
+    margin-top: 10px;  /* Отступ сверху */
+    resize: none;  /* Отключаем возможность изменения размера */
+    height: 80px;  /* Высота текстовой области */
+}
+
+
+button {
+    padding: 10px;  /* Внутренние отступы кнопки "Добавить" */
+    width: 100%;  /* Кнопка занимает 100% ширины */
+    margin-top: 10px;  /* Отступ сверху для кнопки "Добавить" */
+    background-color: #28a745;  /* Зелёный цвет кнопки "Добавить" */
+    color: white;  /* Цвет текста на кнопке */
+    border: none;  /* Убираем границу кнопки */
+    cursor: pointer;  /* Курсор-указатель при наведении на кнопку */
+    font-size: 16px;  /* Размер текста кнопки "Добавить" */
+}
+
+button:hover {
+    background-color: #218838;  /* Темный зелёный цвет при наведении */
+}
+
+/* Стили для шапки и навигации */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links li a.active{
+    color: gray;
+    pointer-events: none;
+    cursor: default;
+}
+
+.nav-links li a.active:hover{
+    color: red;
+    pointer-events: none;
+    cursor: default;
+}
+
+.nav-links li a:hover {
+    background-color: #575757;
+    border-radius: 20px;
+}
+
+.burger-menu {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Сначала скрыто за пределами экрана */
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    z-index: 1500;
+    padding-top: 20px;
+    transition: right 0.3s ease-in-out; /* Плавное появление */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar ul li a.active{
+    color: gray;
+    pointer-events: none;
+    cursor: default;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Скрываем стандартное меню на планшетах и телефонах */
+    }
+
+    .container {
+        display: flex;  /* Размещение колонок в ряд */
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;  /* Внутренние отступы вокруг контейнера */
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .burger-menu {
+        display: block; /* Отображаем иконку бургер-меню */
+    }
+
+    .sidebar {
+        right: -250px; /* Скрытое состояние */
+    }
+
+    .sidebar.active {
+        right: 0px; /* Появляется слева при открытии */
+    }
+}
+
+.content {
+    padding: 100px 20px;
+    text-align: center;
+  }
+
+.content img{
+    max-width: 100%;
+    height: auto;
+  }
+
+.description {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    color: #333;
+}
+
+.image-container{
+    float: right;
+    margin-right: 25%; 
+    height: 1000px;             
+}
+
+.logo {
+    display: flex;
+    align-items: center;  
+}
+
+.logo-image {
+    height: 75px;           
+    margin-right: 10px;
+    margin-left: 20px;       
+}
+
+/* Стили для кнопок */
+.dialog-button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.dialog-button#confirmExit {
+    background-color: #d9534f;
+    color: white;
+}
+
+.dialog-button#cancelExit {
+    background-color: #5bc0de;
+    color: white;
+}
+
+/* Стили для диалогового окна */
+dialog {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+}
+

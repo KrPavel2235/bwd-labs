@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О приложении</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel=”icon” href=”favicon.ico”>
+</head>
+<body>
+    <!-- Шапка с навигацией -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo" class="logo-image">
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="List.html">Список задач</a></li>
+                <li><a href="about.html"><font color="red">О приложении</font></a></li>
+            </ul>
+        </nav>
+        <div class="burger-menu" onclick="toggleMenu()">
+            &#9776; <!-- Символ "бургер-меню" -->
+        </div>
+        
+    </header>
+    
+    <!-- Сайдбар для мобильного меню -->
+    <div id="sidebar" class="sidebar">
+        <div class="close-btn" onclick="toggleMenu()">&#10005;</div>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+            <li><a href="List.html">Список задач</a></li>
+            <li><a href="about.html"><font color="red">О приложении</font></a></li>
+        </ul>
+    </div>
+
+    <!-- Контент страницы О приложении -->
+    <div class="content">
+        <h1>О приложении</h1>
+        <p>Данный сайт создан для сдачи лабораторных по предмету "Веб-разработка" студентом группы ПрИ-23 Кривоногов П.В</p>
+    </div>
+    <script src="bundle.js"></script>
+</body>
+</html>

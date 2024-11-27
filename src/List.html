@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список задач</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel=”icon” href=”favicon.ico”>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo" class="logo-image">
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="List.html"><font color="red">Список задач</font></a></li>
+                <li><a href="about.html">О приложении</a></li>
+            </ul>
+        </nav>
+        <div class="burger-menu" onclick="toggleMenu()">
+            &#9776; <!-- Символ "бургер-меню" -->
+        </div>
+    </header>
+    
+    <!-- Сайдбар для мобильного меню -->
+    <div id="sidebar" class="sidebar">
+        <div class="close-btn" onclick="toggleMenu()">&#10005;</div>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+            <li><a href="List.html"><font color="red">Список задач</font></a></li>
+            <li><a href="about.html">О приложении</a></li>
+        </ul>
+    </div>
+<div class="content">
+    <div class="container">
+        <div class="column">
+            <h2>Задачи</h2>
+            <div id="tasks"></div>
+            <button id="addTaskButton">Добавить</button>
+        </div>
+        <div class="column">
+            <h2>В работе</h2>
+            <div id="inProgress"></div>
+        </div>
+        <div class="column">
+            <h2>Выполненные</h2>
+            <div id="done"></div>
+        </div>
+    </div>
+</div>
+<!-- Модальное окно -->
+<div id="taskModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Добавить задачу</h2>
+        <form id="taskForm">
+            <label for="taskInput">Название задачи:</label>
+            <input type="text" id="taskInput" name="taskInput" required>
+
+            <label for="taskDescription">Описание задачи:</label>
+            <textarea id="taskDescription" name="taskDescription" rows="4" required></textarea>
+
+            <div class="modal-buttons">
+                <button type="submit" onclick="addTask()">Добавить</button>
+                <button type="button" id="cancelButton" class="cancel-button">Отмена</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="bundle.js"></script>
+</body>
+</html>
